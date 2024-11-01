@@ -37,7 +37,7 @@ TableParams findBiggestWidths(list<Book*> anyBookList) {	// Ф-я нахождения самых
 
 void PrintHeaders(TableParams param)					// Ф-я печати заголовков
 {
-	cout << char(218) << setfill(char(196)) << setw() << char(194) << setfill(char(196)) << setw(width) << char(194) << setfill(char(196)) << setw(width) << char(194) << setfill(char(196)) << setw(width) << char(191) << endl;
+	cout << char(218) << setfill(char(196)) << setw(param.colBookName) << char(194) << setfill(char(196)) << setw(width) << char(194) << setfill(char(196)) << setw(width) << char(194) << setfill(char(196)) << setw(width) << char(191) << endl;
 	cout << char(179) << 'N' << setfill(' ') << setw(width - 1) << char(179) << 'X' << setfill(' ') << setw(width - 1) << char(179) << "F(x)" << setfill(' ') << setw(width - 4) << char(179) << "G(x)" << setfill(' ') << setw(width - 4) << char(179) << endl;
 
 }
