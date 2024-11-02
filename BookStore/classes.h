@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iterator>
 #include <list>
+#include <string>
 using namespace std;
 
 
@@ -15,24 +16,24 @@ enum class SortType { Title, Author, Year };												// Перечисление для выбо
 class Book {
 
 private:
-	char* bookName;		// Название книги
-	char* authorName;	// Имя автора
+	string bookName;		// Название книги
+	string authorName;	// Имя автора
 	int year;			// Год издания
 	int price;			// Цена книги
 	SortType cmpCriterium;   // Сортировка по заголовку/автору/году
 
 public:
-	Book(char* init_bookName, char* init_authorName, int init_year, int init_price);	// Создать книгу
+	Book(string init_bookName, string init_authorName, int init_year, int init_price);	// Создать книгу
 	~Book(){}																			// Деструктор
 
-	char* getBookName() { return bookName; }											// Получить поле названия
-	char* getAuthorName() { return authorName; }										// Получить Имя автора
+	string getBookName() { return bookName; }											// Получить поле названия
+	string getAuthorName() { return authorName; }										// Получить Имя автора
 	int getYear() { return year; }														// Получить Год издания
 	int getPrice() { return price; }													// Получить Цену книги
 	SortType getCmpCriterium() { return cmpCriterium; }									// Получить Сравнение по заголовку/автору/году
 
-	void setBookName(char * newBookName) { bookName = newBookName; }					// Изменить поле названия
-	void setAuthorName(char* newAuthorName) { authorName = newAuthorName; }				// Изменить Имя автора
+	void setBookName(string newBookName) { bookName = newBookName; }					// Изменить поле названия
+	void setAuthorName(string newAuthorName) { authorName = newAuthorName; }				// Изменить Имя автора
 	void setYear(int newYear) { year= newYear; }										// Изменить Год издания
 	void setPrice(int newPrice) { price = newPrice; }									// Изменить Цену книги
 	void setCmpCriterium(SortType newCmpCriterium) { cmpCriterium = newCmpCriterium; }	// Изменить Сравнение по заголовку/автору/году
@@ -114,8 +115,8 @@ public:
 
 	list<Book*> getBookList() { return BookList; }										// Получить Контейнер книг
 	void addBook(Book* _book);															//— добавляет новую книгу в магазин.
-	void removeBook(char* _title);														//— удаляет книгу по названию.
-	Book* findBook(char* _title);														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
+	void removeBook(string _title);														//— удаляет книгу по названию.
+	Book* findBook(string _title);														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
 	list<Book*> listBooks(SortType sortType);											//— возвращает список всех книг, отсортированных по названию, автору или году издания(в зависимости от значения аргумента SortType).
 	list<Book*> findBooksInPriceRange(int minPrice, int maxPrice);						//— возвращает <корректный_контейнер> книг, цена которых находится в указанном диапазоне.
 	void PrintConstrainedList(list<Book*> anyBookList, TableParams param);				// Печать отсортированного списка книг или списка с ценой в диапазоне или данного списка

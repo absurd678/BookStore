@@ -25,11 +25,11 @@ TableParams findBiggestWidths(list<Book*> anyBookList) {	// Ф-я нахождения самых
 		int priceLen = (int)log10(((*pBook)->getPrice()))+1; // кол-во цифр в числе price
 		int yearLen = (int)log10(((*pBook)->getYear())) + 1; // кол-во цифр в числе year
 
-		if (strlen((*pBook)->getBookName()) > newParam.colBookName) {		// Проверка длины поля bookName
-			newParam.colBookName = strlen((*pBook)->getBookName()) + 2;
+		if ((*pBook)->getBookName().length() > newParam.colBookName) {		// Проверка длины поля bookName
+			newParam.colBookName = (*pBook)->getBookName().length() + 2;
 		}
-		if (strlen((*pBook)->getAuthorName()) > newParam.colAuthorName) {   // Проверка длины поля authorName
-			newParam.colAuthorName = strlen((*pBook)->getAuthorName()) + 2;
+		if ((*pBook)->getAuthorName().length() > newParam.colAuthorName) {   // Проверка длины поля authorName
+			newParam.colAuthorName = (*pBook)->getAuthorName().length() + 2;
 		}
 		if (yearLen > newParam.colYear) {									// Проверка длины поля year
 			newParam.colYear = yearLen + 2;
@@ -57,8 +57,8 @@ void PrintLine(TableParams param)						// Ф-я печати разделяющей линии
 
 void PrintContent(TableParams param, Book* pBook)		// Ф-я печати данных о книге
 {
-	int BookNameLen = strlen(pBook->getBookName());
-	int AuthorNameLen = strlen(pBook->getAuthorName());
+	int BookNameLen = pBook->getBookName().length();
+	int AuthorNameLen = pBook->getAuthorName().length();
 	int YearLen = (int)log10(((pBook)->getYear())) + 1;
 	int PriceLen = (int)log10(((pBook)->getPrice())) + 1;
 
@@ -71,7 +71,7 @@ void PrintContent(TableParams param, Book* pBook)		// Ф-я печати данных о книге
 
 //-------------------------Класс Book--------------------------------
 
-Book::Book(char* init_bookName, char* init_authorName, int init_year, int init_price) {
+Book::Book(string init_bookName, string init_authorName, int init_year, int init_price) {
 	bookName = init_bookName;
 	authorName = init_authorName;
 	year = init_year;
@@ -86,23 +86,23 @@ void BookStore::addBook(Book* _book) {															//— добавляет новую книгу в
 	BookList.push_back(_book);
 } // addBook
 
-void BookStore::removeBook(char* _title) {														//— удаляет книгу по названию.
+void BookStore::removeBook(string _title) {														//— удаляет книгу по названию.
 	
 	Book* target = findBook(_title);
 	if (target == NULL) {
-		cout << "Книга не найдена." << endl;
+		cout << "\nКнига не найдена.\n" << endl;
 		return;
 	}
-	cout << "Удалена книга: " << target->getBookName()<<endl;
+	cout << "\nУдалена книга: " << target->getBookName()<<endl;
 	BookList.remove(target);
 
 } // removeBook
 
-Book* BookStore::findBook(char* _title) {														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
+Book* BookStore::findBook(string _title) {														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
 	
 	list<Book*>::iterator pBook;
 	for (pBook = BookList.begin(); pBook != BookList.end(); pBook++) {
-		if (strcmp(_title, (*pBook)->getBookName()) == 0) {
+		if (_title == (*pBook)->getBookName()) {
 			return *pBook;
 		}
 	}
