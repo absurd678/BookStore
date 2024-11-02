@@ -4,19 +4,7 @@
 #include <list>
 using namespace std;
 
-//--------------------- Структура параметров таблицы, в которой содержатся данные о книгах -----------------------
-struct TableParams {
-	int colBookName;		// Ширина столбца 1 (bookName)
-	int colAuthorName;		// Ширина столбца 2 (authorName)
-	int colYear;			// Ширина столбца 3 (year)
-	int colPrice;			// Ширина столбца 4 (price)
-};
 
-// Служебные функции для вывода таблицы
-TableParams findBiggestWidths(list<Book*> anyBookList);	// Ф-я нахождения самых длинных имен
-void PrintHeaders(TableParams param);					// Ф-я печати заголовков
-void PrintLine(TableParams param);						// Ф-я печати разделяющей линии
-void PrintContent(TableParams param, Book* pBook);		// Ф-я печати данных о книге
 
 
 //---------------------------- Класс Перечисление ----------------------------------
@@ -31,7 +19,7 @@ private:
 	char* authorName;	// Имя автора
 	int year;			// Год издания
 	int price;			// Цена книги
-	SortType cmpCriterium;   // Сравнение по заголовку/автору/году
+	SortType cmpCriterium;   // Сортировка по заголовку/автору/году
 
 public:
 	Book(char* init_bookName, char* init_authorName, int init_year, int init_price);	// Создать книгу
@@ -97,6 +85,21 @@ public:
 	} // operator>
 
 }; // Book
+
+
+//--------------------- Структура параметров таблицы, в которой содержатся данные о книгах -----------------------
+struct TableParams {
+	int colBookName;		// Ширина столбца 1 (bookName)
+	int colAuthorName;		// Ширина столбца 2 (authorName)
+	int colYear;			// Ширина столбца 3 (year)
+	int colPrice;			// Ширина столбца 4 (price)
+}; // TableParams
+
+// Служебные функции для вывода таблицы
+TableParams findBiggestWidths(list<Book*> anyBookList);	// Ф-я нахождения самых длинных имен
+void PrintHeaders(TableParams param);					// Ф-я печати заголовков
+void PrintLine(TableParams param);						// Ф-я печати разделяющей линии
+void PrintContent(TableParams param, Book* pBook);		// Ф-я печати данных о книге
 
 
 //---------------------------- Класс BookStore -------------------------------------

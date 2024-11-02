@@ -2,10 +2,34 @@
 //
 
 #include <iostream>
+#include "classes.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    
+    setlocale(LC_ALL, "");
+    BookStore newStore = BookStore();
+
+    // Добавление
+    Book newBook = Book((char *)"На западном фронте без перемен", (char *)"Э.М. Ремарк", 1920, 330);
+    newStore.addBook(&newBook);
+    Book newBook1 = Book((char*)"Критика чистого разума", (char*)"И. Кант", 1780, 330);
+    newStore.addBook(&newBook1);
+    Book newBook2 = Book((char*)"Матанализ", (char*)"Л.Д. Кудрявцев", 2000, 1000);
+    newStore.addBook(&newBook2);
+    Book newBook3 = Book((char*)"Архипелаг ГУЛАГ", (char*)"Солженицын", 1960, 1500);
+    newStore.addBook(&newBook3);
+
+   
+
+    // Печать таблицы
+    list<Book*> filtered = newStore.findBooksInPriceRange(5000, 10000);
+    TableParams newParam = findBiggestWidths(filtered);
+    newStore.PrintConstrainedList(filtered, newParam); // Просто все книги без сортировки
+    
+
+    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
