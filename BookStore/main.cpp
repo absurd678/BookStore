@@ -1,9 +1,14 @@
 ﻿// BookStore.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
+//#include <windows.h>
+#include <limits> // Include limits for numeric_limits
+//#undef max // Undefine the max macro
+
 #include <iostream>
 #include "classes.h"
 #include <string>
+
 using namespace std;
 
 //--------------------- ПЕРЕМЕННЫЕ -------------------------------
@@ -14,17 +19,20 @@ string authorMain;
 int yearMain;
 int priceMain;
 TableParams paramMain;  // Параметры для рисования таблицы
+int minPrice, maxPrice; // ценовой диапазон
 
 
 
 int main()
 {
-    
-    setlocale(LC_ALL, "");
+    //SetConsoleCP(CP_UTF8);
+    //SetConsoleOutputCP(CP_UTF8);
+    setlocale(LC_ALL, "Russian");
     newStore = BookStore();
     paramMain = findBiggestWidths(newStore.getBookList());  // Определяем размеры столбцов по умолчанию
 
     // Основной цикл
+    cout << "Добро пожаловать в программу магазин книг!" << endl;
     while (1) {
         cout<< "1. Добавить книгу\n"
             << "2. Удалить книгу" <<
@@ -33,7 +41,8 @@ int main()
             "5.Найти книги в ценовом диапазоне\n"
             << "6.Выйти\n"
             << "Выберете опцию:";
-        cin >> option; 
+        cin >> option;
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (cin.fail()) { // проверить на число
             cout << "\nВведите, пожалуйста, номер варианта (число)\n" << endl;
@@ -42,6 +51,7 @@ int main()
 
         if (option == 1) { // Добавить книгу
             
+
             cout << "\nВведите название книги: "; getline(cin, bookMain);
             cout << "\nВведите автора книги: "; getline(cin, authorMain);
             cout << "\nВведите год издания: "; cin >> yearMain;
@@ -57,6 +67,7 @@ int main()
             Book newBook = Book(bookMain, authorMain, yearMain, priceMain);
             newStore.addBook(&newBook);
             cout << "\n\nКнига успешно добавлена!" << endl;
+            cout << bookMain << "\t" << authorMain << endl;
 
             paramMain = findBiggestWidths(newStore.getBookList());  // Обновляем размеры столбцов
 
@@ -68,7 +79,7 @@ int main()
             newStore.removeBook(bookMain);
             paramMain = findBiggestWidths(newStore.getBookList());  // Обновляем размеры столбцов
 
-        } // if 2
+        } // else if 2
 
         else if (option == 3) { // Найти книгу по названию
             
@@ -82,7 +93,7 @@ int main()
             list<Book*> oneBook{ target };          // Инициализация списка для вывода ответа в виде таблицы
             newStore.PrintConstrainedList(oneBook, paramMain);      // Печать таблицы
 
-        } // if 3
+        } // else if 3
 
         else if (option == 4) { // Показать все книги(сортировка по названию / автору / году издания)
 
@@ -96,23 +107,54 @@ int main()
             if (cin.fail()) {
                 cout << "\nНекорректный тип" << endl;
                 continue;
-            }
-            
-            SortType optionType = static_cast<SortType>(option);
+            } // if
+            if (option < 0 || option>2) {                                               // option м.б. только из {0,1,2}
+                cout << "\nНекорректное число" << endl;
+                continue;
+            } // if
 
-        } // if 4
+            SortType optionType = static_cast<SortType>(option);                        // Перевод номера опции option в SortType
+            newStore.PrintConstrainedList(newStore.listBooks(optionType), paramMain);   // Печать отсортированного списка
 
+        } // else if 4
+
+        else if (option == 5) {  // Найти книги в ценовом диапазоне
+
+            cout << "\nВведите минимальную цену: "; cin >> minPrice;
+            if (cin.fail()) {
+                cout << "\nНекорректный тип" << endl;
+                continue;
+            } // if
+
+            cout << "\nВведите максимальную цену: "; cin >> maxPrice;
+            if (cin.fail()) {
+                cout << "\nНекорректный тип" << endl;
+                continue;
+            } // if
+
+            if (maxPrice < minPrice) {
+                cout << "\nМаксимальная цена д.б. больше минимальной!" << endl;
+                continue;
+            } // if
+
+            newStore.PrintConstrainedList(newStore.findBooksInPriceRange(minPrice, maxPrice), paramMain);   // Печать списка книг из ценового диапазона
+
+        } // else if 5
+
+        else if (option == 6) {
+
+            cout << "\nВы выходите из программы магазина книг.\n";
+            return 0;
+
+        } // else if 6
+
+        else {
+
+            cout << "\nВведите номер от 1 до 6\n";
+            continue;
+
+        } // else
         
     } // while
 } // main
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
