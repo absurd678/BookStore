@@ -59,10 +59,10 @@ void PrintLine(TableParams param)						// Ф-я печати разделяющ�
 
 void PrintContent(TableParams param, Book* pBook)		// Ф-я печати данных о книге
 {
-	int BookNameLen = pBook->getBookName().length();
-	int AuthorNameLen = pBook->getAuthorName().length();
-	int YearLen = (int)log10(((pBook)->getYear())) + 1;
-	int PriceLen = (int)log10(((pBook)->getPrice())) + 1;
+	int BookNameLen = pBook->getBookName().length();		// Длина названия книги
+	int AuthorNameLen = pBook->getAuthorName().length();    // Длина автора
+	int YearLen = (int)log10(((pBook)->getYear())) + 1;     // Длина года
+	int PriceLen = (int)log10(((pBook)->getPrice())) + 1;   // Длина цены
 
 	cout << "|" << pBook->getBookName() << setfill(' ') << setw(param.colBookName - BookNameLen) << "|"
 		<< pBook->getAuthorName() << setfill(' ') << setw(param.colAuthorName - AuthorNameLen) << "|"
@@ -137,12 +137,12 @@ list<Book*> BookStore::listBooks(SortType sortType) {											//— возвр
 	list<Book*>::iterator pBook;
 	i = 0;
 	for (pBook = BookList.begin(); pBook != BookList.end(); pBook++) {
-		(*pBook)->setCmpCriterium(sortType);
-		BookArray[i] = *pBook;
+		(*pBook)->setCmpCriterium(sortType);						// Указать критерий сортировки
+		BookArray[i] = *pBook;										// Добавить массив с указанным критерием сортировки
 		i++;
 	} // for
 
-	// Отсортируем массив
+	// Отсортируем массив вставками
 	for (i = 1; i < bookAmount; i++) {
 		j = i - 1;
 		Book* currBook = BookArray[i];

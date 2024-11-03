@@ -43,11 +43,11 @@ public:
 	friend bool operator==(Book Book1, Book Book2) {
 
 		switch (Book1.getCmpCriterium()) {
-		case SortType::Title:
+		case SortType::Title:															// Сравнение по полю названия книги
 			return Book1.getBookName()[0] == Book2.getBookName()[0];
-		case SortType::Author:
+		case SortType::Author:															// Сравнение по полю автора
 			return Book1.getAuthorName()[0] == Book2.getAuthorName()[0];
-		case SortType::Year:
+		case SortType::Year:															// Сравнение по полю года
 			return Book1.getYear() == Book2.getYear();
 		default:
 			cout << "Неизвестный параметр сортировки книг" << endl;
@@ -58,11 +58,11 @@ public:
 	friend bool operator<(Book Book1, Book Book2) {
 
 		switch (Book1.getCmpCriterium()) {
-		case SortType::Title:
+		case SortType::Title:															// Сравнение по полю названия книги
 			return Book1.getBookName()[0] < Book2.getBookName()[0];
-		case SortType::Author:
+		case SortType::Author:															// Сравнение по полю автора
 			return Book1.getAuthorName()[0] < Book2.getAuthorName()[0];
-		case SortType::Year:
+		case SortType::Year:															// Сравнение по полю года
 			return Book1.getYear() < Book2.getYear();
 		default:
 			cout << "Неизвестный параметр сортировки книг" << endl;
@@ -73,11 +73,11 @@ public:
 	friend bool operator>(Book Book1, Book Book2) {
 
 		switch (Book1.getCmpCriterium()) {
-		case SortType::Title:
+		case SortType::Title:															// Сравнение по полю названия книги
 			return Book1.getBookName()[0] > Book2.getBookName()[0];
-		case SortType::Author:
+		case SortType::Author:															// Сравнение по полю автора
 			return Book1.getAuthorName()[0] > Book2.getAuthorName()[0];
-		case SortType::Year:
+		case SortType::Year:															// Сравнение по полю года
 			return Book1.getYear() > Book2.getYear();
 		default:
 			cout << "Неизвестный параметр сортировки книг" << endl;
