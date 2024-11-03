@@ -7,11 +7,11 @@
 using namespace std;
 
 //-----------------------КОНСТАНТЫ--------------------------
-
-const int minColBookName = 10;
-const int minColAuthorName = 7;
-const int minColYear = 5;
-const int minColPrice = 6;
+// Для отображения таблицы
+const int minColBookName = 10;								// Длина колонки с названием книги
+const int minColAuthorName = 7;								// Длина колонки с автором
+const int minColYear = 5;									// Длина колонки с годом
+const int minColPrice = 12;									// Длина колонки с ценой 
 
 
 // -------------------------Функции вывода таблицы-------------------------------------------
@@ -47,7 +47,7 @@ TableParams findBiggestWidths(list<Book*> anyBookList) {	// Ф-я нахождения самых
 void PrintHeaders(TableParams param)					// Ф-я печати заголовков
 {
 	cout << "+" << setfill('-') << setw(param.colBookName) << "+" << setfill('-') << setw(param.colAuthorName) << "+" << setfill('-') << setw(param.colYear) << "+" << setfill('-') << setw(param.colPrice) << "+" << endl;
-	cout << "|" << "Название" << setfill(' ') << setw(param.colBookName - minColBookName + 2) << "|" << "Автор" << setfill(' ') << setw(param.colAuthorName - minColAuthorName + 2) << "|" << "Год" << setfill(' ') << setw(param.colYear - minColYear + 2) << "|" << "Цена" << setfill(' ') << setw(param.colPrice - minColPrice + 2) << "|" << endl;
+	cout << "|" << "Название" << setfill(' ') << setw(param.colBookName - minColBookName + 2) << "|" << "Автор" << setfill(' ') << setw(param.colAuthorName - minColAuthorName + 2) << "|" << "Год" << setfill(' ') << setw(param.colYear - minColYear + 2) << "|" << "Цена, руб." << setfill(' ') << setw(param.colPrice - minColPrice + 2) << "|" << endl;
 	cout << "+" << setfill('-') << setw(param.colBookName) << "+" << setfill('-') << setw(param.colAuthorName) << "+" << setfill('-') << setw(param.colYear) << "+" << setfill('-') << setw(param.colPrice) << "+" << endl;
 } // PrintHeaders
 

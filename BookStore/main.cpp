@@ -9,12 +9,13 @@
 using namespace std;
 
 //--------------------- ПЕРЕМЕННЫЕ -------------------------------
+
 int option;             // выбранная пользователем команда
 BookStore newStore;     // объект BookStore
-string bookMain;
-string authorMain;
-int yearMain;
-int priceMain;
+string bookMain;        // Для инициализации Book, поле bookName
+string authorMain;      // Для инициализации Book, поле authorName
+int yearMain;           // Для инициализации Book, поле year
+int priceMain;          // Для инициализации Book, поле price
 TableParams paramMain;  // Параметры для рисования таблицы
 int minPrice, maxPrice; // ценовой диапазон
 Book* pNewBook;         // Указатель на очередную книгу
@@ -25,6 +26,8 @@ int askSelectOption(int& choice);                                               
 int inputOption1(string& book, string& author, int& year, int& price);          // Функция запроса данных для опции Добавить книгу
 int inputOption4(int&choice);                                                   // Функция запроса данных для опции Показать все книги
 int inputOption5(int& minPrice, int& maxPrice);                                 // Функция запроса данных для опции Найти книги в ценовом диапазоне
+
+//-------------------- ГЛАВНАЯ ПРОГРАММА --------------------------
 
 int main()
 {
