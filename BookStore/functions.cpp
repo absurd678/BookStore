@@ -7,6 +7,7 @@
 using namespace std;
 
 //----------------------- ŒÕ—“¿Õ“€--------------------------
+
 const int minColBookName = 10;
 const int minColAuthorName = 7;
 const int minColYear = 5;

@@ -9,10 +9,12 @@ using namespace std;
 
 
 //---------------------------- Класс Перечисление ----------------------------------
+
 enum class SortType { Title, Author, Year };												// Перечисление для выбора поля сортировки
 
 
 //------------------- Класс Book -------------------------------
+
 class Book {
 
 private:
@@ -89,6 +91,7 @@ public:
 
 
 //--------------------- Структура параметров таблицы, в которой содержатся данные о книгах -----------------------
+
 struct TableParams {
 	int colBookName;		// Ширина столбца 1 (bookName)
 	int colAuthorName;		// Ширина столбца 2 (authorName)
@@ -104,6 +107,7 @@ void PrintContent(TableParams param, Book* pBook);		// Ф-я печати данных о книге
 
 
 //---------------------------- Класс BookStore -------------------------------------
+
 class BookStore {
 
 private:
