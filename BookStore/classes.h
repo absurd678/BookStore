@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <iterator>
 #include <list>
@@ -6,39 +6,39 @@
 using namespace std;
 
 
-//---------------------------- Класс Перечисление ----------------------------------
+//---------------------------- РљР»Р°СЃСЃ РџРµСЂРµС‡РёСЃР»РµРЅРёРµ ----------------------------------
 
-enum class SortType { Title, Author, Year };												// Перечисление для выбора поля сортировки
+enum class SortType { Title, Author, Year };												// РџРµСЂРµС‡РёСЃР»РµРЅРёРµ РґР»СЏ РІС‹Р±РѕСЂР° РїРѕР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 
 
-//------------------- Класс Book -------------------------------
+//------------------- РљР»Р°СЃСЃ Book -------------------------------
 
 class Book {
 
 private:
-	string bookName;		// Название книги
-	string authorName;	// Имя автора
-	int year;			// Год издания
-	int price;			// Цена книги
-	SortType cmpCriterium;   // Сортировка по заголовку/автору/году
+	string bookName;		// РќР°Р·РІР°РЅРёРµ РєРЅРёРіРё
+	string authorName;	// РРјСЏ Р°РІС‚РѕСЂР°
+	int year;			// Р“РѕРґ РёР·РґР°РЅРёСЏ
+	int price;			// Р¦РµРЅР° РєРЅРёРіРё
+	SortType cmpCriterium;   // РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ/Р°РІС‚РѕСЂСѓ/РіРѕРґСѓ
 
 public:
-	Book(string init_bookName, string init_authorName, int init_year, int init_price);	// Создать книгу
-	~Book(){}																			// Деструктор
+	Book(string init_bookName, string init_authorName, int init_year, int init_price);	// РЎРѕР·РґР°С‚СЊ РєРЅРёРіСѓ
+	~Book(){}																			// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	string getBookName() { return bookName; }											// Получить поле названия
-	string getAuthorName() { return authorName; }										// Получить Имя автора
-	int getYear() { return year; }														// Получить Год издания
-	int getPrice() { return price; }													// Получить Цену книги
-	SortType getCmpCriterium() { return cmpCriterium; }									// Получить Сравнение по заголовку/автору/году
+	string getBookName() { return bookName; }											// РџРѕР»СѓС‡РёС‚СЊ РїРѕР»Рµ РЅР°Р·РІР°РЅРёСЏ
+	string getAuthorName() { return authorName; }										// РџРѕР»СѓС‡РёС‚СЊ РРјСЏ Р°РІС‚РѕСЂР°
+	int getYear() { return year; }														// РџРѕР»СѓС‡РёС‚СЊ Р“РѕРґ РёР·РґР°РЅРёСЏ
+	int getPrice() { return price; }													// РџРѕР»СѓС‡РёС‚СЊ Р¦РµРЅСѓ РєРЅРёРіРё
+	SortType getCmpCriterium() { return cmpCriterium; }									// РџРѕР»СѓС‡РёС‚СЊ РЎСЂР°РІРЅРµРЅРёРµ РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ/Р°РІС‚РѕСЂСѓ/РіРѕРґСѓ
 
-	void setBookName(string newBookName) { bookName = newBookName; }					// Изменить поле названия
-	void setAuthorName(string newAuthorName) { authorName = newAuthorName; }				// Изменить Имя автора
-	void setYear(int newYear) { year= newYear; }										// Изменить Год издания
-	void setPrice(int newPrice) { price = newPrice; }									// Изменить Цену книги
-	void setCmpCriterium(SortType newCmpCriterium) { cmpCriterium = newCmpCriterium; }	// Изменить Сравнение по заголовку/автору/году
+	void setBookName(string newBookName) { bookName = newBookName; }					// РР·РјРµРЅРёС‚СЊ РїРѕР»Рµ РЅР°Р·РІР°РЅРёСЏ
+	void setAuthorName(string newAuthorName) { authorName = newAuthorName; }				// РР·РјРµРЅРёС‚СЊ РРјСЏ Р°РІС‚РѕСЂР°
+	void setYear(int newYear) { year= newYear; }										// РР·РјРµРЅРёС‚СЊ Р“РѕРґ РёР·РґР°РЅРёСЏ
+	void setPrice(int newPrice) { price = newPrice; }									// РР·РјРµРЅРёС‚СЊ Р¦РµРЅСѓ РєРЅРёРіРё
+	void setCmpCriterium(SortType newCmpCriterium) { cmpCriterium = newCmpCriterium; }	// РР·РјРµРЅРёС‚СЊ РЎСЂР°РІРЅРµРЅРёРµ РїРѕ Р·Р°РіРѕР»РѕРІРєСѓ/Р°РІС‚РѕСЂСѓ/РіРѕРґСѓ
 
-	// Перегрузка операторов сравнения (для корректной сортировки)
+	// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ СЃСЂР°РІРЅРµРЅРёСЏ (РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё)
 
 	friend bool operator==(Book Book1, Book Book2) {
 
@@ -50,7 +50,7 @@ public:
 		case SortType::Year:
 			return Book1.getYear() == Book2.getYear();
 		default:
-			cout << "Неизвестный параметр сортировки книг" << endl;
+			cout << "РќРµРёР·РІРµСЃС‚РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ СЃРѕСЂС‚РёСЂРѕРІРєРё РєРЅРёРі" << endl;
 			return false;
 		} // switch
 	} // operator==
@@ -65,7 +65,7 @@ public:
 		case SortType::Year:
 			return Book1.getYear() < Book2.getYear();
 		default:
-			cout << "Неизвестный параметр сортировки книг" << endl;
+			cout << "РќРµРёР·РІРµСЃС‚РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ СЃРѕСЂС‚РёСЂРѕРІРєРё РєРЅРёРі" << endl;
 			return false;
 		} // switch
 	} // operator<
@@ -80,7 +80,7 @@ public:
 		case SortType::Year:
 			return Book1.getYear() > Book2.getYear();
 		default:
-			cout << "Неизвестный параметр сортировки книг" << endl;
+			cout << "РќРµРёР·РІРµСЃС‚РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ СЃРѕСЂС‚РёСЂРѕРІРєРё РєРЅРёРі" << endl;
 			return false;
 		} // switch
 	} // operator>
@@ -88,39 +88,39 @@ public:
 }; // Book
 
 
-//--------------------- Структура параметров таблицы, в которой содержатся данные о книгах -----------------------
+//--------------------- РЎС‚СЂСѓРєС‚СѓСЂР° РїР°СЂР°РјРµС‚СЂРѕРІ С‚Р°Р±Р»РёС†С‹, РІ РєРѕС‚РѕСЂРѕР№ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ РґР°РЅРЅС‹Рµ Рѕ РєРЅРёРіР°С… -----------------------
 
 struct TableParams {
-	int colBookName;		// Ширина столбца 1 (bookName)
-	int colAuthorName;		// Ширина столбца 2 (authorName)
-	int colYear;			// Ширина столбца 3 (year)
-	int colPrice;			// Ширина столбца 4 (price)
+	int colBookName;		// РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р° 1 (bookName)
+	int colAuthorName;		// РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р° 2 (authorName)
+	int colYear;			// РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р° 3 (year)
+	int colPrice;			// РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р° 4 (price)
 }; // TableParams
 
-// Служебные функции для вывода таблицы
-TableParams findBiggestWidths(list<Book*> anyBookList);	// Ф-я нахождения самых длинных имен
-void PrintHeaders(TableParams param);					// Ф-я печати заголовков
-void PrintLine(TableParams param);						// Ф-я печати разделяющей линии
-void PrintContent(TableParams param, Book* pBook);		// Ф-я печати данных о книге
+// РЎР»СѓР¶РµР±РЅС‹Рµ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РІРѕРґР° С‚Р°Р±Р»РёС†С‹
+TableParams findBiggestWidths(list<Book*> anyBookList);	// Р¤-СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ СЃР°РјС‹С… РґР»РёРЅРЅС‹С… РёРјРµРЅ
+void PrintHeaders(TableParams param);					// Р¤-СЏ РїРµС‡Р°С‚Рё Р·Р°РіРѕР»РѕРІРєРѕРІ
+void PrintLine(TableParams param);						// Р¤-СЏ РїРµС‡Р°С‚Рё СЂР°Р·РґРµР»СЏСЋС‰РµР№ Р»РёРЅРёРё
+void PrintContent(TableParams param, Book* pBook);		// Р¤-СЏ РїРµС‡Р°С‚Рё РґР°РЅРЅС‹С… Рѕ РєРЅРёРіРµ
 
 
-//---------------------------- Класс BookStore -------------------------------------
+//---------------------------- РљР»Р°СЃСЃ BookStore -------------------------------------
 
 class BookStore {
 
 private:
-	list<Book*> BookList;																// Контейнер книг
+	list<Book*> BookList;																// РљРѕРЅС‚РµР№РЅРµСЂ РєРЅРёРі
 
 public:
-	BookStore() { list<Book*> BookList{}; }												// Создание контейнера
-	~BookStore() {}																		// Деструктор
+	BookStore() { list<Book*> BookList{}; }												// РЎРѕР·РґР°РЅРёРµ РєРѕРЅС‚РµР№РЅРµСЂР°
+	~BookStore() {}																		// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 
-	list<Book*> getBookList() { return BookList; }										// Получить Контейнер книг
-	void addBook(Book* _book);															//— добавляет новую книгу в магазин.
-	void removeBook(string _title);														//— удаляет книгу по названию.
-	Book* findBook(string _title);														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
-	list<Book*> listBooks(SortType sortType);											//— возвращает список всех книг, отсортированных по названию, автору или году издания(в зависимости от значения аргумента SortType).
-	list<Book*> findBooksInPriceRange(int minPrice, int maxPrice);						//— возвращает <корректный_контейнер> книг, цена которых находится в указанном диапазоне.
-	void PrintConstrainedList(list<Book*> anyBookList, TableParams param);				// Печать отсортированного списка книг или списка с ценой в диапазоне или данного списка
+	list<Book*> getBookList() { return BookList; }										// РџРѕР»СѓС‡РёС‚СЊ РљРѕРЅС‚РµР№РЅРµСЂ РєРЅРёРі
+	void addBook(Book* _book);															//вЂ” РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІСѓСЋ РєРЅРёРіСѓ РІ РјР°РіР°Р·РёРЅ.
+	void removeBook(string _title);														//вЂ” СѓРґР°Р»СЏРµС‚ РєРЅРёРіСѓ РїРѕ РЅР°Р·РІР°РЅРёСЋ.
+	Book* findBook(string _title);														//вЂ” РЅР°С…РѕРґРёС‚ РєРЅРёРіСѓ РїРѕ РЅР°Р·РІР°РЅРёСЋ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅРµС‘(РµСЃР»Рё РєРЅРёРіР° РЅР°Р№РґРµРЅР°).
+	list<Book*> listBooks(SortType sortType);											//вЂ” РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… РєРЅРёРі, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹С… РїРѕ РЅР°Р·РІР°РЅРёСЋ, Р°РІС‚РѕСЂСѓ РёР»Рё РіРѕРґСѓ РёР·РґР°РЅРёСЏ(РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ Р·РЅР°С‡РµРЅРёСЏ Р°СЂРіСѓРјРµРЅС‚Р° SortType).
+	list<Book*> findBooksInPriceRange(int minPrice, int maxPrice);						//вЂ” РІРѕР·РІСЂР°С‰Р°РµС‚ <РєРѕСЂСЂРµРєС‚РЅС‹Р№_РєРѕРЅС‚РµР№РЅРµСЂ> РєРЅРёРі, С†РµРЅР° РєРѕС‚РѕСЂС‹С… РЅР°С…РѕРґРёС‚СЃСЏ РІ СѓРєР°Р·Р°РЅРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ.
+	void PrintConstrainedList(list<Book*> anyBookList, TableParams param);				// РџРµС‡Р°С‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР° РєРЅРёРі РёР»Рё СЃРїРёСЃРєР° СЃ С†РµРЅРѕР№ РІ РґРёР°РїР°Р·РѕРЅРµ РёР»Рё РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
 
 }; // BookStore

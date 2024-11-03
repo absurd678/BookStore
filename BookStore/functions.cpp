@@ -1,4 +1,4 @@
-//------------------------ФАЙЛ С РЕАЛИЗАЦИЕЙ МЕТОДОВ КЛАССОВ----------------------------------
+п»ї//------------------------Р¤РђР™Р› РЎ Р Р•РђР›РР—РђР¦РР•Р™ РњР•РўРћР”РћР’ РљР›РђРЎРЎРћР’----------------------------------
 #include <iostream>
 #include <iomanip>
 #include <iterator>
@@ -6,37 +6,37 @@
 #include "classes.h"
 using namespace std;
 
-//-----------------------КОНСТАНТЫ--------------------------
+//-----------------------РљРћРќРЎРўРђРќРўР«--------------------------
 // 
-// Для отображения таблицы
-const int minColBookName = 10;								// Длина колонки с названием книги
-const int minColAuthorName = 7;								// Длина колонки с автором
-const int minColYear = 5;									// Длина колонки с годом
-const int minColPrice = 12;									// Длина колонки с ценой 
+// Р”Р»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚Р°Р±Р»РёС†С‹
+const int minColBookName = 10;								// Р”Р»РёРЅР° РєРѕР»РѕРЅРєРё СЃ РЅР°Р·РІР°РЅРёРµРј РєРЅРёРіРё
+const int minColAuthorName = 7;								// Р”Р»РёРЅР° РєРѕР»РѕРЅРєРё СЃ Р°РІС‚РѕСЂРѕРј
+const int minColYear = 5;									// Р”Р»РёРЅР° РєРѕР»РѕРЅРєРё СЃ РіРѕРґРѕРј
+const int minColPrice = 12;									// Р”Р»РёРЅР° РєРѕР»РѕРЅРєРё СЃ С†РµРЅРѕР№ 
 
 
-// -------------------------Функции вывода таблицы-------------------------------------------
+// -------------------------Р¤СѓРЅРєС†РёРё РІС‹РІРѕРґР° С‚Р°Р±Р»РёС†С‹-------------------------------------------
 
-TableParams findBiggestWidths(list<Book*> anyBookList) {	// Ф-я нахождения самых длинных имен
+TableParams findBiggestWidths(list<Book*> anyBookList) {	// Р¤-СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ СЃР°РјС‹С… РґР»РёРЅРЅС‹С… РёРјРµРЅ
 
-	TableParams newParam{ minColBookName,minColAuthorName,minColYear,minColPrice };					// Минимальные параметры ширины каждого столбца
+	TableParams newParam{ minColBookName,minColAuthorName,minColYear,minColPrice };					// РњРёРЅРёРјР°Р»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ С€РёСЂРёРЅС‹ РєР°Р¶РґРѕРіРѕ СЃС‚РѕР»Р±С†Р°
 
 	list<Book*>::iterator pBook;
 	for (pBook = anyBookList.begin(); pBook != anyBookList.end(); pBook++) {
 
-		int priceLen = (int)log10(((*pBook)->getPrice()))+1; // кол-во цифр в числе price
-		int yearLen = (int)log10(((*pBook)->getYear())) + 1; // кол-во цифр в числе year
+		int priceLen = (int)log10(((*pBook)->getPrice()))+1; // РєРѕР»-РІРѕ С†РёС„СЂ РІ С‡РёСЃР»Рµ price
+		int yearLen = (int)log10(((*pBook)->getYear())) + 1; // РєРѕР»-РІРѕ С†РёС„СЂ РІ С‡РёСЃР»Рµ year
 
-		if ((*pBook)->getBookName().length() > newParam.colBookName) {		// Проверка длины поля bookName
+		if ((*pBook)->getBookName().length() > newParam.colBookName) {		// РџСЂРѕРІРµСЂРєР° РґР»РёРЅС‹ РїРѕР»СЏ bookName
 			newParam.colBookName = (*pBook)->getBookName().length() + 2;
 		}
-		if ((*pBook)->getAuthorName().length() > newParam.colAuthorName) {   // Проверка длины поля authorName
+		if ((*pBook)->getAuthorName().length() > newParam.colAuthorName) {   // РџСЂРѕРІРµСЂРєР° РґР»РёРЅС‹ РїРѕР»СЏ authorName
 			newParam.colAuthorName = (*pBook)->getAuthorName().length() + 2;
 		}
-		if (yearLen > newParam.colYear) {									// Проверка длины поля year
+		if (yearLen > newParam.colYear) {									// РџСЂРѕРІРµСЂРєР° РґР»РёРЅС‹ РїРѕР»СЏ year
 			newParam.colYear = yearLen + 2;
 		}
-		if (priceLen > newParam.colPrice) {									// Проверка длины поля price
+		if (priceLen > newParam.colPrice) {									// РџСЂРѕРІРµСЂРєР° РґР»РёРЅС‹ РїРѕР»СЏ price
 			newParam.colPrice = priceLen + 2;
 		}
 
@@ -45,19 +45,19 @@ TableParams findBiggestWidths(list<Book*> anyBookList) {	// Ф-я нахождения самых
 	return newParam;
 } // findBiggestWidths
 
-void PrintHeaders(TableParams param)					// Ф-я печати заголовков
+void PrintHeaders(TableParams param)					// Р¤-СЏ РїРµС‡Р°С‚Рё Р·Р°РіРѕР»РѕРІРєРѕРІ
 {
 	cout << "+" << setfill('-') << setw(param.colBookName) << "+" << setfill('-') << setw(param.colAuthorName) << "+" << setfill('-') << setw(param.colYear) << "+" << setfill('-') << setw(param.colPrice) << "+" << endl;
-	cout << "|" << "Название" << setfill(' ') << setw(param.colBookName - minColBookName + 2) << "|" << "Автор" << setfill(' ') << setw(param.colAuthorName - minColAuthorName + 2) << "|" << "Год" << setfill(' ') << setw(param.colYear - minColYear + 2) << "|" << "Цена, руб." << setfill(' ') << setw(param.colPrice - minColPrice + 2) << "|" << endl;
+	cout << "|" << "РќР°Р·РІР°РЅРёРµ" << setfill(' ') << setw(param.colBookName - minColBookName + 2) << "|" << "РђРІС‚РѕСЂ" << setfill(' ') << setw(param.colAuthorName - minColAuthorName + 2) << "|" << "Р“РѕРґ" << setfill(' ') << setw(param.colYear - minColYear + 2) << "|" << "Р¦РµРЅР°, СЂСѓР±." << setfill(' ') << setw(param.colPrice - minColPrice + 2) << "|" << endl;
 	cout << "+" << setfill('-') << setw(param.colBookName) << "+" << setfill('-') << setw(param.colAuthorName) << "+" << setfill('-') << setw(param.colYear) << "+" << setfill('-') << setw(param.colPrice) << "+" << endl;
 } // PrintHeaders
 
-void PrintLine(TableParams param)						// Ф-я печати разделяющей линии
+void PrintLine(TableParams param)						// Р¤-СЏ РїРµС‡Р°С‚Рё СЂР°Р·РґРµР»СЏСЋС‰РµР№ Р»РёРЅРёРё
 {
 	cout << "+" << setfill('-') << setw(param.colBookName) << "+" << setfill('-') << setw(param.colAuthorName) << "+" << setfill('-') << setw(param.colYear) << "+" << setfill('-') << setw(param.colPrice) << "+" << endl;
 } // PrintLine
 
-void PrintContent(TableParams param, Book* pBook)		// Ф-я печати данных о книге
+void PrintContent(TableParams param, Book* pBook)		// Р¤-СЏ РїРµС‡Р°С‚Рё РґР°РЅРЅС‹С… Рѕ РєРЅРёРіРµ
 {
 	int BookNameLen = pBook->getBookName().length();
 	int AuthorNameLen = pBook->getAuthorName().length();
@@ -71,36 +71,36 @@ void PrintContent(TableParams param, Book* pBook)		// Ф-я печати данных о книге
 
 } // PrintContent
 
-//-------------------------Класс Book--------------------------------
+//-------------------------РљР»Р°СЃСЃ Book--------------------------------
 
 Book::Book(string init_bookName, string init_authorName, int init_year, int init_price) {
 	bookName = init_bookName;
 	authorName = init_authorName;
 	year = init_year;
 	price = init_price;
-	cmpCriterium = SortType::Title; // По умолчанию - критерий Title
+	cmpCriterium = SortType::Title; // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РєСЂРёС‚РµСЂРёР№ Title
 } // Book
 
 
-//-------------------------Класс BookStore--------------------------------
+//-------------------------РљР»Р°СЃСЃ BookStore--------------------------------
 
-void BookStore::addBook(Book* _book) {															//— добавляет новую книгу в магазин.
+void BookStore::addBook(Book* _book) {															//вЂ” РґРѕР±Р°РІР»СЏРµС‚ РЅРѕРІСѓСЋ РєРЅРёРіСѓ РІ РјР°РіР°Р·РёРЅ.
 	BookList.push_back(_book);
 } // addBook
 
-void BookStore::removeBook(string _title) {														//— удаляет книгу по названию.
+void BookStore::removeBook(string _title) {														//вЂ” СѓРґР°Р»СЏРµС‚ РєРЅРёРіСѓ РїРѕ РЅР°Р·РІР°РЅРёСЋ.
 	
 	Book* target = findBook(_title);
 	if (target == NULL) {
-		cout << "\nКнига не найдена.\n" << endl;
+		cout << "\nРљРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР°.\n" << endl;
 		return;
 	}
-	cout << "\nУдалена книга: " << target->getBookName()<<endl;
+	cout << "\nРЈРґР°Р»РµРЅР° РєРЅРёРіР°: " << target->getBookName()<<endl;
 	BookList.remove(target);
 
 } // removeBook
 
-Book* BookStore::findBook(string _title) {														//— находит книгу по названию и возвращает указатель на неё(если книга найдена).
+Book* BookStore::findBook(string _title) {														//вЂ” РЅР°С…РѕРґРёС‚ РєРЅРёРіСѓ РїРѕ РЅР°Р·РІР°РЅРёСЋ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅРµС‘(РµСЃР»Рё РєРЅРёРіР° РЅР°Р№РґРµРЅР°).
 	
 	list<Book*>::iterator pBook;
 	for (pBook = BookList.begin(); pBook != BookList.end(); pBook++) {
@@ -109,10 +109,10 @@ Book* BookStore::findBook(string _title) {														//— находит книгу по наз
 		}
 	}
 	
-	return NULL;							// Книга не найдена => NULL
+	return NULL;							// РљРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР° => NULL
 } // findBook
 
-void BookStore::PrintConstrainedList(list<Book*> anyBookList, TableParams param) {									// Печать отсортированного списка книг или списка с ценой в диапазоне или данного списка
+void BookStore::PrintConstrainedList(list<Book*> anyBookList, TableParams param) {									// РџРµС‡Р°С‚СЊ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР° РєРЅРёРі РёР»Рё СЃРїРёСЃРєР° СЃ С†РµРЅРѕР№ РІ РґРёР°РїР°Р·РѕРЅРµ РёР»Рё РґР°РЅРЅРѕРіРѕ СЃРїРёСЃРєР°
 	list<Book*>::iterator pbook;
 	
 	PrintHeaders(param);
@@ -124,16 +124,16 @@ void BookStore::PrintConstrainedList(list<Book*> anyBookList, TableParams param)
 	
 } // PrintConstrainedList
 
-list<Book*> BookStore::listBooks(SortType sortType) {											//— возвращает список всех книг, отсортированных по названию, автору или году издания(в зависимости от значения аргумента SortType).
+list<Book*> BookStore::listBooks(SortType sortType) {											//вЂ” РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… РєРЅРёРі, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹С… РїРѕ РЅР°Р·РІР°РЅРёСЋ, Р°РІС‚РѕСЂСѓ РёР»Рё РіРѕРґСѓ РёР·РґР°РЅРёСЏ(РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ Р·РЅР°С‡РµРЅРёСЏ Р°СЂРіСѓРјРµРЅС‚Р° SortType).
 	
-	int bookAmount = BookList.size();								// Кол-во книг
-	list<Book*> sortedList{};										// Отсортированный список
-	Book** BookArray = new Book * [bookAmount];						// Массив книг для сортировки вставками
-	int i, j;														// Переменные для прохода по массиву 
+	int bookAmount = BookList.size();								// РљРѕР»-РІРѕ РєРЅРёРі
+	list<Book*> sortedList{};										// РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє
+	Book** BookArray = new Book * [bookAmount];						// РњР°СЃСЃРёРІ РєРЅРёРі РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РІСЃС‚Р°РІРєР°РјРё
+	int i, j;														// РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РїСЂРѕС…РѕРґР° РїРѕ РјР°СЃСЃРёРІСѓ 
 	
-	if (bookAmount == 1) return BookList;							// Вернуть тот же список, если книга всего одна 
+	if (bookAmount == 1) return BookList;							// Р’РµСЂРЅСѓС‚СЊ С‚РѕС‚ Р¶Рµ СЃРїРёСЃРѕРє, РµСЃР»Рё РєРЅРёРіР° РІСЃРµРіРѕ РѕРґРЅР° 
 	
-	// Скопируем список в массив
+	// РЎРєРѕРїРёСЂСѓРµРј СЃРїРёСЃРѕРє РІ РјР°СЃСЃРёРІ
 	list<Book*>::iterator pBook;
 	i = 0;
 	for (pBook = BookList.begin(); pBook != BookList.end(); pBook++) {
@@ -142,7 +142,7 @@ list<Book*> BookStore::listBooks(SortType sortType) {											//— возвращает с
 		i++;
 	} // for
 
-	// Отсортируем массив
+	// РћС‚СЃРѕСЂС‚РёСЂСѓРµРј РјР°СЃСЃРёРІ
 	for (i = 1; i < bookAmount; i++) {
 		j = i - 1;
 		Book* currBook = BookArray[i];
@@ -155,7 +155,7 @@ list<Book*> BookStore::listBooks(SortType sortType) {											//— возвращает с
 		BookArray[j + 1] = currBook;
 	} // for
 
-	// Скопируем массив в новый отсортированный список
+	// РЎРєРѕРїРёСЂСѓРµРј РјР°СЃСЃРёРІ РІ РЅРѕРІС‹Р№ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє
 	for (i = 0; i < bookAmount; i++) {
 		sortedList.push_back(BookArray[i]);
 	} // for
@@ -164,9 +164,9 @@ list<Book*> BookStore::listBooks(SortType sortType) {											//— возвращает с
 } // listBooks
 
 list<Book*> BookStore::findBooksInPriceRange(int minPrice, int maxPrice) {
-	list<Book*> filteredList{}; // Список с книгами в заданном ценовом диапазоне
+	list<Book*> filteredList{}; // РЎРїРёСЃРѕРє СЃ РєРЅРёРіР°РјРё РІ Р·Р°РґР°РЅРЅРѕРј С†РµРЅРѕРІРѕРј РґРёР°РїР°Р·РѕРЅРµ
 
-	// Скопируем список в массив
+	// РЎРєРѕРїРёСЂСѓРµРј СЃРїРёСЃРѕРє РІ РјР°СЃСЃРёРІ
 	list<Book*>::iterator pBook;
 	for (pBook = BookList.begin(); pBook != BookList.end(); pBook++) {
 		if ((*pBook)->getPrice() >= minPrice && (*pBook)->getPrice() <= maxPrice) {
